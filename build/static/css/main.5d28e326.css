@@ -1,0 +1,2 @@
+*{box-sizing:border-box;font:inherit;margin:0;padding:0}body,html{height:100vh}body{align-items:center;display:flex;justify-content:center}.cell{background-color:#f0f8ff00;border:1px solid #000;font-size:1.5rem;height:2rem;padding:auto auto auto .5rem;width:2rem;z-index:10}.cell:focus{outline:none}.revealed{color:red}#overlay{display:grid;grid-template-columns:1fr 1fr 1fr;position:absolute;width:18rem}.overlay-cell{border:2px solid #000;height:6rem;width:6rem;z-index:1}
+/*# sourceMappingURL=main.5d28e326.css.map*/
