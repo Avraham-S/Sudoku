@@ -52,13 +52,23 @@ function App() {
   const [puzzleMap, setPuzzleMap] = useState();
   const [puzzle, setPuzzle] = useState();
   const [answer, setAnswer] = useState({});
-
+  const [difficulty, setDifficulty] = useState("easy");
+  const difficulties = {
+    easy: 25,
+    medium: 15,
+    hard: 10,
+    veryHard: 7,
+  };
   useEffect(() => {
+    init();
+  }, []);
+
+  const init = () => {
     const puzzle = generatePuzzle(9).flat();
     setPuzzle(puzzle);
     const randomIndexes = new Set();
 
-    while (randomIndexes.size <= 29) {
+    while (randomIndexes.size <= difficulties[difficulty]) {
       const randomIndex = Math.floor(Math.random() * 81 + 1);
       randomIndexes.add(randomIndex);
     }
@@ -82,7 +92,11 @@ function App() {
     });
 
     setPuzzleMap(puzzleMap);
-  }, []);
+  };
+
+  useEffect(() => {
+    init();
+  }, [difficulty]);
 
   const setColsStyle = (size) => {
     let rowsStyle = "";
@@ -112,6 +126,16 @@ function App() {
 
   return (
     <>
+      <select
+        onChange={(e) => {
+          setDifficulty(e.target.value);
+        }}
+      >
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="veryHard">Very Hard</option>
+      </select>
       <div
         id="overlay"
         style={{
